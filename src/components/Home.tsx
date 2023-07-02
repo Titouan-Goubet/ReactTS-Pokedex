@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Cards from './Cards';
 import InputRangeComponent from './InputRange';
+import SearchBar from './SearchBar';
 
 function Home() {
   const [inputRangeValue, setInputRangeValue] = useState(10);
@@ -18,6 +19,7 @@ function Home() {
         initialValue={inputRangeValue}
         onChange={handleInputRangeChange}
       />
+      <SearchBar />
       <Cards inputRangeValue={inputRangeValue} />
     </>
   );

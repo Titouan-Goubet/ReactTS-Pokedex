@@ -1,15 +1,21 @@
-import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createReducer,
+  createAction,
+} from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Pokemon } from '../../@types/pokemon';
 
 interface PokemonsState {
   list: Pokemon[];
   isLoading: boolean;
+  searchValue: string;
 }
 
 export const initialState: PokemonsState = {
   list: [],
   isLoading: true,
+  searchValue: '',
 };
 
 export const fetchPokemons = createAsyncThunk(
@@ -23,6 +29,10 @@ export const fetchPokemons = createAsyncThunk(
   }
 );
 
+export const updateSearchValue = createAction<string>(
+  'pokemons/updateSearchValue'
+);
+
 const pokemonsReducer = createReducer(initialState, (builder) => {
   builder
     .addCase(fetchPokemons.fulfilled, (state, action) => {
@@ -34,6 +44,9 @@ const pokemonsReducer = createReducer(initialState, (builder) => {
     })
     .addCase(fetchPokemons.rejected, (state) => {
       state.isLoading = false;
+    })
+    .addCase(updateSearchValue, (state, action) => {
+      state.searchValue = action.payload;
     });
 });
 
