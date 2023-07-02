@@ -1,5 +1,6 @@
 import { useAppSelector } from '../hooks/redux';
 import Card from './Card';
+import '../styles/animate.css';
 
 interface CardsProps {
   inputRangeValue: number;
@@ -17,7 +18,9 @@ function Cards({ inputRangeValue }: CardsProps) {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-center mb-8">Mon pokédex</h1>
+      <h1 className="font-custom font-extrabold text-4xl text-center mb-8 typing-text">
+        <span className="text">Mon pokédex</span>
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
         {filteredPokemons.map((pokemon) => (
           <Card key={pokemon.pokedexId} {...pokemon} />

@@ -27,7 +27,7 @@ function InputRangeComponent({
     <div className="p-12 rounded-lg">
       <label
         htmlFor="filterPokemons"
-        className="block mb-4 text-sm font-medium text-gray-900 dark:text-white"
+        className="block mb-4 text-sm font-medium text-black-900 dark:text-black"
       >
         Trier le nombre de pokemons souhaités : {inputRangeValue}
       </label>

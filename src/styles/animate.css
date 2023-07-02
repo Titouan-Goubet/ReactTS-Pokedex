@@ -1,0 +1,35 @@
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  40% {
+    width: 100%;
+  }
+  60% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes blinking-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.typing-text .text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  animation: typing 6s infinite;
+}
+
+.typing-text .text::after {
+  content: '|';
+  display: inline-block;
+  vertical-align: bottom;
+  animation: blinking-caret 1s infinite;
+}
