@@ -29,6 +29,16 @@ export const fetchPokemons = createAsyncThunk(
   }
 );
 
+export const fetchPokemonByName = createAsyncThunk(
+  'pokemons/fetchPokemonById',
+  async (slug: string) => {
+    const { data: pokemon } = await axios.get<Pokemon[]>(
+      `https://api-pokemon-fr.vercel.app/api/v1/pokemon/${slug}`
+    );
+    return pokemon;
+  }
+);
+
 export const updateSearchValue = createAction<string>(
   'pokemons/updateSearchValue'
 );

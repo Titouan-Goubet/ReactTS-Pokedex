@@ -1,23 +1,18 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import App from './components/App';
 import PokemonPageCard from './components/PokemonPageCard';
 import Home from './components/Home';
 
-export const routerConfig = [
-  {
-    path: '/',
-    element: <App />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: 'pokemon/:slug',
-        element: <PokemonPageCard />,
-      },
-    ],
-  },
-];
+function MainRouter() {
+  return (
+    <Router>
+      <App />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="pokemon/:slug" element={<PokemonPageCard />} />
+      </Routes>
+    </Router>
+  );
+}
 
-export const router = createBrowserRouter(routerConfig);
+export default MainRouter;
