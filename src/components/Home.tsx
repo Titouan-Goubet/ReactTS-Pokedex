@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import Cards from './Cards';
 import InputRangeComponent from './InputRange';
 import SearchBar from './SearchBar';
+import FilterPokemons from './FilterPokemons';
 
 function Home() {
-  const [inputRangeValue, setInputRangeValue] = useState(10);
+  const [selectedValue, setselectedValue] = useState('');
 
-  const handleInputRangeChange = (value: number) => {
+  const handleStateChange = (newValue: SetStateAction<string>) => {
+    setselectedValue(newValue);
+  };
+  const [inputRangeValue, setInputRangeValue] = useState(200);
+
+  const handleInputRangeChange = (value: SetStateAction<number>) => {
     setInputRangeValue(value);
   };
 
@@ -14,13 +20,14 @@ function Home() {
     <>
       <InputRangeComponent
         min={10}
-        max={200}
-        step={10}
+        max={1000}
+        step={30}
         initialValue={inputRangeValue}
         onChange={handleInputRangeChange}
       />
       <SearchBar />
-      <Cards inputRangeValue={inputRangeValue} />
+      <FilterPokemons onStateChange={handleStateChange} />
+      <Cards inputRangeValue={inputRangeValue} selectedValue={selectedValue} />
     </>
   );
 }

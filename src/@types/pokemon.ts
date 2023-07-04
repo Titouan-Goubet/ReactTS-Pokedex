@@ -8,14 +8,14 @@ export interface Pokemon {
   sprites: Sprites;
   types: Type[];
   talents?: Talent[];
-  stats?: Stats;
+  stats: Stats;
   resistances?: Resistance[];
   evolution?: Evolution;
   height?: string;
-  weight?: string;
+  weight: number;
   egg_groups?: string[];
   sexe?: Sexe;
-  catch_rate?: number;
+  catch_rate: number;
   level_100?: number;
   forme?: Forme[];
   next: unknown;

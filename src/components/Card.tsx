@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface CardProps {
   name: Name;
@@ -30,12 +30,10 @@ export interface Type {
 }
 
 function Card({ name, category, generation, sprites }: CardProps) {
-  const navigate = useNavigate();
+  const lowercaseName = name.fr.toLowerCase();
+
   return (
-    <Link
-      to={`/pokemon/${name.fr.toLowerCase()}`}
-      onClick={() => navigate(`/pokemon/${name.fr.toLowerCase()}`)}
-    >
+    <Link to={`/pokemon/${lowercaseName}`}>
       <article className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <img className="" src={sprites.regular} alt="Pokemon représenté" />
         <div className="p-5">
